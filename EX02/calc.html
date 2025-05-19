@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>iPhone 스타일 계산기</title>
+  <style>
+    body {
+      background: rgb(227, 219, 219);
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .calculator {
+      width: 300px;
+    }
+
+    .display {
+      background: black;
+      color: white;
+      text-align: right;
+      font-size: 2.5em;
+      padding: 20px;
+      border-bottom: 1px solid #444;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding: 10px;
+    }
+
+    button {
+      border: none;
+      border-radius: 50%;
+      font-size: 1.5em;
+      padding: 20px;
+      cursor: pointer;
+    }
+
+    .gray { background: #a5a5a5; color: black; }
+    .dark { background: #333; }
+    .orange { background: orange; color: white; }
+    .zero {
+      grid-column: span 2;
+      border-radius: 20px;
+      text-align: left;
+      padding-left: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="calculator">
+  <div class="display" id="display">0</div>
+  <div class="buttons">
+    <button class="gray" onclick="clearDisplay()">AC</button>
+    <button class="gray" onclick="toggleSign()">±</button>
+    <button class="gray" onclick="percent()">%</button>
+    <button class="orange" onclick="setOperation('/')">÷</button>
+
+    <button class="dark" onclick="appendNumber('7')">7</button>
+    <button class="dark" onclick="appendNumber('8')">8</button>
+    <button class="dark" onclick="appendNumber('9')">9</button>
+    <button class="orange" onclick="setOperation('*')">×</button>
+
+    <button class="dark" onclick="appendNumber('4')">4</button>
+    <button class="dark" onclick="appendNumber('5')">5</button>
+    <button class="dark" onclick="appendNumber('6')">6</button>
+    <button class="orange" onclick="setOperation('-')">−</button>
+
+    <button class="dark" onclick="appendNumber('1')">1</button>
+    <button class="dark" onclick="appendNumber('2')">2</button>
+    <button class="dark" onclick="appendNumber('3')">3</button>
+    <button class="orange" onclick="setOperation('+')">+</button>
+
+    <button class="dark zero" onclick="appendNumber('0')">0</button>
+    <button class="dark" onclick="appendNumber('.')">.</button>
+    <button class="orange" onclick="calculate()">=</button>
+  </div>
+</div>
+
+<script>
+  let current = '';
+  let previous = '';
+  let operator = null;
+
+  function updateDisplay() {
+    document.getElementById("display").innerText = current || '0';
+  }
+
+  function appendNumber(num) {
+    if (num === '.' && current.includes('.')) return;
+    current += num;
+    updateDisplay();
+  }
+
+  function clearDisplay() {
+    current = '';
+    previous = '';
+    operator = null;
+    updateDisplay();
+  }
+
+  function toggleSign() {
+    if (current) {
+      current = (parseFloat(current) * -1).toString();
+      updateDisplay();
+    }
+  }
+
+  function percent() {
+    if (current) {
+      current = (parseFloat(current) / 100).toString();
+      updateDisplay();
+    }
+  }
+
+  function setOperation(op) {
+    if (current === '') return;
+    if (previous !== '') calculate();
+    operator = op;
+    previous = current;
+    current = '';
+  }
+
+  function calculate() {
+    let result;
+    const prev = parseFloat(previous);
+    const curr = parseFloat(current);
+    if (isNaN(prev) || isNaN(curr)) return;
+
+    switch (operator) {
+      case '+': result = prev + curr; break;
+      case '-': result = prev - curr; break;
+      case '*': result = prev * curr; break;
+      case '/': result = curr === 0 ? "오류" : prev / curr; break;
+      default: return;
+    }
+
+    current = result.toString();
+    operator = null;
+    previous = '';
+    updateDisplay();
+  }
+</script>
+
+</body>
+</html>

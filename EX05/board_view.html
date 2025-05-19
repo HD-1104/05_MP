@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RUBATO 커뮤니티</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+
+    header,
+    nav,
+    main,
+    footer {
+      max-width: 960px;
+      margin: auto;
+    }
+
+    .logo-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .logo-bar img {
+      height: 60px;
+      margin-right: 10px;
+    }
+
+    .top-nav {
+      font-size: 0.9em;
+      color: #444;
+      user-select: none;
+    }
+
+    nav {
+      background: #6aab4e;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+    }
+
+    nav ul li {
+      padding: 10px 20px;
+      color: white;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    nav ul li:hover {
+      background: #5a9c40;
+    }
+
+    .content {
+      display: flex;
+      margin-top: 20px;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .left-box {
+      width: 200px;
+      flex-shrink: 0;
+    }
+
+    .left-box .login-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .left-box .login-box input {
+      width: 100%;
+      margin-bottom: 5px;
+      box-sizing: border-box;
+      padding: 5px;
+    }
+
+    .left-box .login-box button {
+      width: 100%;
+      background-color: #6aab4e;
+      color: white;
+      border: none;
+      padding: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 6px;
+    }
+
+    .left-box .login-box button:hover {
+      background-color: #5a9c40;
+    }
+
+    .left-box .login-box a {
+      font-size: 0.85em;
+      text-decoration: none;
+      color: #666;
+    }
+
+    .left-box .login-box a:hover {
+      text-decoration: underline;
+    }
+
+    .guestbook-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color: #e6f2d9;
+      margin-top: 20px;
+      border-radius: 8px;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+      color: #6aab4e;
+      font-weight: 600;
+      font-size: 1.05em;
+      position: relative;
+      max-width: 200px;
+    }
+
+    .guestbook-box img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .guestbook-box .text-overlay {
+      position: absolute;
+      top: 85px;
+      right: 0;
+      width: 165px;
+      height: 250px;
+      background: transparent;
+      color: black;
+      font-size: 15px;
+      line-height: 2;
+      padding: 10px;
+    }
+
+    .main-box {
+      flex: 1;
+    }
+
+    .main-image {
+      text-align: center;
+      color: #a9c88c;
+    }
+
+    .main-image img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      object-fit: cover;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .main-image p {
+      font-weight: bold;
+      margin-top: 10px;
+      color: #a9c88c;
+    }
+
+    .section {
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.05);
+      color: #a9c88c;
+      margin-top: 20px;
+    }
+
+    .section h3 {
+      font-size: 1em;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+      color: #a9c88c;
+    }
+
+    .section-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.9em;
+    }
+
+    .section-list li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      line-height: 1.3em;
+      border-bottom: 1px dotted #ddd;
+      padding-bottom: 3px;
+    }
+
+    .section-list li:last-child {
+      border-bottom: none;
+    }
+
+    .section-list .title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .section-list .title img {
+      width: 18px;
+      height: 18px;
+    }
+
+    .section-list .date {
+      flex-shrink: 0;
+      color: #999;
+      font-size: 0.85em;
+      margin-left: 10px;
+      white-space: nowrap;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85em;
+      color: #444;
+      margin-top: 40px;
+      padding: 20px 0;
+      border-top: 1px solid #ccc;
+    }
+
+    .image-text-wrapper {
+      position: relative;
+      display: block;
+    }
+
+    .background-image {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      font-size: 0.9em;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
+
+
+    .overlay-text span {
+      display: block;
+      margin: 4px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo-bar">
+      <img src="img/logo.png" alt="logo" />
+      <div class="top-nav">HOME | LOGIN | JOIN | NOTICE</div>
+    </div>
+  </header>
+
+  <nav style="position: relative; width: 100%; max-width: 960px; margin: auto;">
+    <img src="img/main_menu_bg.png" alt="메뉴배경" style="width: 100%; display: block;" />
+    <ul
+      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+             display: flex; list-style: none; margin: 0; padding: 0; justify-content: center; width: 100%; color: white; font-weight: bold;">
+      <li style="padding: 10px 15px; cursor: pointer;">자유게시판</li>
+      <li style="padding: 10px 15px; cursor: pointer;">기타연주</li>
+      <li style="padding: 10px 15px; cursor: pointer;">공동구매</li>
+      <li style="padding: 10px 15px; cursor: pointer;">연주회안내</li>
+      <li style="padding: 10px 15px; cursor: pointer;">회원게시판</li>
+      <li style="padding: 10px 15px; cursor: pointer;">기부 안내</li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="content">
+      <div class="left-box">
+        <div class="login-box">
+          <strong style="color: green;">Member LOGIN</strong><br /><br />
+
+          <input type="text" placeholder="아이디" /><br />
+          <input type="password" placeholder="비밀번호" /><br />
+          <button>로그인</button><br /><br />
+          <a href="#">회원가입</a> | <a href="#">아이디/비밀번호 찾기</a>
+        </div>
+
+        <!-- 방명록 박스 추가 -->
+        <div class="guestbook-box">
+          <img src="img/sub_menu_bg.png" alt="메뉴배경" />
+          <div class="text-overlay">
+            ▶ 자유 게시판<br />
+            ▶ 방명록<br />
+            ▶ 공지사항<br />
+            ▶ 동영상 신청<br />
+            ▶ 포토 갤러리
+          </div>
+        </div>
+
+        <!-- 이용안내 추가 -->
+        <div> <img src="img/banner1.png">
+          <img src="img/banner2.png">
+          <img src="img/banner3.png">
+
+
+
+        </div>
+
+      </div>
+
+      <div class="main-box">
+        <div class="main-image">
+          <img src="img/comm.gif" alt="main" />
+          <p><strong>클래식 기타를 사랑하는 사람들의 온라인 커뮤니티</strong></p>
+        </div>
+
+        <title>자유 게시판</title>
+        <style>
+          body {
+            font-family: "Malgun Gothic", sans-serif;
+            font-size: 13px;
+            color: #333;
+            margin: 30px;
+            background: #fff;
+          }
+
+          .board-wrapper {
+            width: 700px;
+            border-top: 2px solid #aaa;
+            padding-top: 15px;
+          }
+
+          .board-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          .board-header h2 {
+            font-size: 15px;
+            margin: 0;
+          }
+
+          .board-info {
+            margin: 10px 0 20px 0;
+            font-size: 12px;
+            color: #555;
+          }
+
+          .search-box {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+          }
+
+          .search-box label {
+            color: #666;
+          }
+
+          .search-box select,
+          .search-box input[type="text"] {
+            height: 22px;
+            font-size: 12px;
+            border: 1px solid #ccc;
+            padding: 0 5px;
+          }
+
+          .search-box img {
+            height: 23px;
+            cursor: pointer;
+          }
+
+          /* 게시물 리스트 스타일 */
+          .section {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 4px;
+            background: #fafafa;
+          }
+
+          .section h3 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #2c0574;
+          }
+
+          .section h3 span {
+            float: right;
+            font-size: 0.8em;
+            color: #2c0574;
+            cursor: pointer;
+          }
+
+          .section-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+          }
+
+          .section-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #ddd;
+          }
+
+          .section-list li:last-child {
+            border-bottom: none;
+          }
+
+          .section-list .title {
+            font-size: 13px;
+            color: #333;
+          }
+
+          .section-list .date {
+            font-size: 12px;
+            color: #999;
+            white-space: nowrap;
+          }
+        </style>
+        </head>
+
+        <body>
+          <div class="board-wrapper">
+            <div class="board-header">
+              <h2>자유 게시판</h2>
+
+            </div>
+
+            <div class="section">
+              <h3>
+                까스님의 선물인 보드카가가 정말 독하네요!!!
+                <span>루라토|조회:208|2025-05-16(9:20)</span>
+              </h3>
+              <ul class="section-list">
+                <li>
+                  <div class="title">공지 사항입니다</div>
+
+                </li>
+                <li>
+                  <div class="title">까스님 고맙습니다.</div>
+
+                </li>
+                <li>
+                  <div class="title">까스님 고맙습니다.</div>
+
+                </li>
+                <li>
+                  <div class="title">까스님 고맙습니다.</div>
+
+                </li>
+                <li>
+                  <div class="title">까스님 고맙습니다.</div>
+
+                </li>
+              </ul>
+            </div>
+            <div
+              style="border: 1px solid #ccc; padding: 15px; border-radius: 8px; display: flex; align-items: center; gap: 15px; margin-bottom: 20px; background-color: #f9f9f9;">
+              <img src="img/title_comment.gif" alt="title" style="vertical-align: middle;">
+
+              <!-- 오른쪽 정렬된 전용 박스 -->
+              <div style="
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 0;
+">
+                <div class="right-box" style="
+    border: 1px solid #ccc;
+    padding: 15px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #f9f9f9;
+    flex-wrap: wrap;
+    max-width: 600px;
+  ">
+                  <h3 style="margin: 0;">💬 여기에 내용을 입력하세요</h3>
+                  <span>예: 이 게시물에 대한 댓글이나 설명을 작성할 수 있습니다.</span>
+                  <img style="margin-left: 55px;" src="img/ok_ripple.gif" alt="ok" style="vertical-align: middle;">
+
+
+
+                </div>
+              </div>
+
+              <!-- Footer -->
+              <footer style="border-top: 1px solid #ccc; padding: 20px 0; font-size: 0.85em; color: #444;">
+                <div style="
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  ">
+                  <div style="
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    ">
+                    <img src="img/logo_footer.gif" alt="logo"
+                      style="height: 50px; vertical-align: middle; filter: hue-rotate(90deg) saturate(3);">
+                  </div>
+                </div>
+              </footer>
+
+              <!-- 오른쪽 텍스트 정보 -->
+              <div style="flex: 1; min-width: 250px; line-height: 1.4em;">
+                <p>서울시 강남구 삼성동 1234 우:123-1234 TEL: 031-123-1234 Email: email@domain.com</p>
+                <p>COPYRIGHT (C) 루바토 ALL RIGHTS RESERVED</p>
+              </div>
+
+              <!-- SNS 아이콘 약간 왼쪽 -->
+              <div
+                style="display: flex; justify-content: flex-end; align-items: center; flex: 1; min-width: 200px; padding-right: 40px;">
+                <div style="display: flex; gap: 10px;">
+                  <img src="img/facebook.gif" alt="facebook" style="height: 24px; width: auto; cursor: pointer;" />
+                  <img src="img/twitter.gif" alt="twitter" style="height: 24px; width: auto; cursor: pointer;" />
+                  <img src="img/blog.gif" alt="blog" style="height: 24px; width: auto; cursor: pointer;" />
+                </div>
+              </div>
+
+            </div>
+            </footer>
