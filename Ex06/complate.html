@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹 호스팅 카드</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .cards {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      background: rgb(194, 46, 46);
+      border-radius: 20px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 4px 12px rgba(139, 0, 219, 0.1);
+      max-width: 500px;
+      flex: 1 1 300px;
+      box-sizing: border-box;
+    }
+
+    .card img {
+      width: 150px;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    .card-text h3 {
+      font-size: 20px;
+      margin: 0 0 10px;
+    }
+
+    .card-text p {
+      font-size: 16px;
+      margin: 0;
+      color: #555;
+    }
+
+    @media (max-width: 600px) {
+  /* max-width : 600px 일때 100px 이미지를 하단으로 떨어드림 반응형처리 */
+  .card {
+    flex-direction: column-reverse; /* 텍스트 먼저 이미지 나중에 (하단 배치) */
+    text-align: center;
+  }
+
+  .card img {
+    width: 100px; /* 이미지 크기 100px로 축소 */
+    margin-top: 10px; /* 텍스트와 이미지 사이 간격 */
+  }
+}
+
+    
+  </style>
+</head>
+<body>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-text">
+        <h3>모든 웹사이트를 누가 호스팅하는지 찾으십시오</h3>
+        <p>웹사이트의 URL을 입력하여 어떤 호스팅 서비스를 사용하는지 알아보십시오</p>
+      </div>
+      <img src="img/fox-in-suit.png" alt="정장 여우">
+    </div>
+
+    <div class="card">
+      <div class="card-text">
+        <h3>시장 점유율 2025</h3>
+        <p>국가별로 나뉜 각 호스팅 회사의 2025 시장 점유율을 살펴보십시오</p>
+      </div>
+      <img src="img/fox-with-horn.png" alt="확성기 여우">
+    </div>
+
+    <div class="card">
+      <div class="card-text">
+        <h3>웹 호스팅의 일대일 비교</h3>
+        <p>3개까지의 웹 호스팅 회사를 간단히 비교하고 어느 것이 더 나은지 보십시오</p>
+      </div>
+      <img src="img/fox-with-server.png" alt="서버 여우">
+    </div>
+
+  </div>
+
+</body>
+</html>
