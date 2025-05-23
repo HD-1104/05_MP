@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>DAYUN ART</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .header-container {
+      width: 100%;
+      background: #f9f9f9;
+    }
+
+    .main-header {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      padding: 20px 0;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .logo span {
+      color: #0077cc;
+    }
+
+    .search-line {
+      position: relative;
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+      margin-right: 8px;
+      padding-bottom: 6px;
+    }
+    .search-line span {
+      position: relative;
+      z-index: 1;
+      letter-spacing: 4px;
+    }
+    .search-line img {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+    }
+    .search-underline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: #56c856;
+      border-radius: 2px;
+      z-index: 0;
+    }
+
+    .auth-links {
+      display: flex;
+      gap: 20px;
+    }
+    .auth-links a {
+      font-weight: 500;
+      font-size: 14px;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+    .auth-links a:hover {
+      color: #0077cc;
+    }
+
+    .nav {
+      background: #444;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    .nav a {
+      color: white;
+      margin: 0 15px;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+    .nav a:hover {
+      color: #99cc33;
+    }
+
+    .main-section {
+      display: flex;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+      gap: 20px;
+    }
+
+    .category {
+      width: 180px;
+    }
+    .category-title {
+      background: #99cc33;
+      color: #fff;
+      padding: 10px;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .category ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .category li {
+      padding: 8px 10px;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      font-size: 13px;
+    }
+
+    .main-banner {
+      flex-grow: 1;
+      background: #fff;
+      text-align: center;
+    }
+    .main-banner img {
+      max-width: 700px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .notice-section {
+      width: 220px;
+    }
+    .notice-box, .event-box {
+      background: #fff;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      border: 1px solid #ddd;
+    }
+    .notice-box h4, .event-box h4 {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #666;
+    }
+
+    .notice-image-text {
+      position: relative;
+      width: 100%;
+    }
+    .notice-image-text img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .notice-image-text ul {
+      position: absolute;
+      top: 28px;
+      left: 20px;
+      color: #555;
+      font-size: 12px;
+      list-style: disc;
+      padding-left: 18px;
+      margin: 0;
+    }
+    .notice-image-text ul li {
+      margin-bottom: 5px;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .image-combined-row {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .image-wrapper {
+      position: relative;
+      width: 48%;
+      border: 1px solid #ccc;
+      background: #fff;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .image-wrapper > img.main-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .overlay-images {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px;
+      padding: 0 10px;
+      box-sizing: border-box;
+      z-index: 2;
+    }
+
+    .overlay-images img {
+      width: 48%;
+      height: auto;
+      border: 1px solid #ccc;
+      background: #fff;
+      border-radius: 4px;
+    }
+
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 13px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-container">
+    <div class="main-header">
+      <div class="logo">DAYUN <span>ART</span></div>
+      <div class="search-line">
+        <span>SEARCH</span>
+        <img src="img/btn_search.gif" alt="검색" />
+        <div class="search-underline"></div>
+      </div>
+      <div class="auth-links">
+        <a href="#">로그인</a>
+        <a href="#">회원가입</a>
+        <a href="#">마이페이지</a>
+        <a href="#">이용안내</a>
+        <a href="#">고객센터</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="#">상세 페이지</a>
+    <a href="#">장바구니</a>
+    <a href="#">고객 갤러리</a>
+    <a href="#">주문배송</a>
+    <a href="#">자주 하는 질문</a>
+  </nav>
+
+  <div class="main-section">
+    <aside class="category">
+      <h3 class="category-title">CATEGORY ITEM</h3>
+      <ul>
+        <li>생활 아트</li>
+        <li>캔버스 아트</li>
+        <li>사진 벽지</li>
+        <li>창문형/현관문형</li>
+        <li>포인트 벽지</li>
+        <li>세계지도</li>
+        <li>앤틱 세계지도 벽지</li>
+        <li>입체 세계지도 벽지</li>
+        <li>어린이방 세계지도</li>
+        <li>즉착형 통스크린</li>
+        <li>맞춤제작 결제창</li>
+      </ul>
+    </aside>
+
+    <section class="main-banner">
+      <img src="img/main_img.gif" alt="메인 배너 이미지" />
+    </section>
+
+    <aside class="notice-section">
+      <div class="notice-box">
+        <div class="notice-image-text">
+          <img src="img/latest_notice.gif" alt="공지사항 이미지" />
+          <ul>
+            <li>폭설로 인한 배송지연 안내</li>
+            <li>배송지연 지역 확인 바랍니다</li>
+            <li>주문 전 참고 부탁드립니다</li>
+          </ul>
+        </div>
+      </div>
+      <div class="event-box">
+        <h4>THE WEEK'S EVENT</h4>
+        <img src="img/week_event_img.gif" alt="이벤트 이미지" />
+      </div>
+    </aside>
+  </div>
+
+  <main>
+    <div class="image-combined-row">
+      <div class="image-wrapper">
+        <img src="img/special_shop.gif" alt="Special Shop" class="main-image" />
+        <div class="overlay-images">
+          <img src="img/special_img1.gif" alt="Special 1" />
+          <img src="img/special_img2.gif" alt="Special 2" />
+        </div>
+      </div>
+  
+      <div class="image-wrapper">
+        <img src="img/landscape.gif" alt="Main" class="main-image" />
+        <div class="overlay-images">
+          <img src="img/landscape_img1.gif" alt="Sub1" />
+          <img src="img/landscape_img2.gif" alt="Sub2" />
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Copyright &copy; 2008 dayunart.com All rights reserved
+  </footer>
+
+</body>
+</html>
